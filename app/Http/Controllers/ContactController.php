@@ -13,6 +13,14 @@ class ContactController extends Controller
     public function index()
     {
         $categories = Categories::all();
+        return view('frontend.contact.show', [
+            'categories' => $categories
+        ]);
+    }
+
+    public function create()
+    {
+        $categories = Categories::all();
         $contact = new Contact();
         return view('frontend.contact.show',[
             'categories' => $categories,
@@ -29,7 +37,7 @@ class ContactController extends Controller
             'subject' => 'required|min:5',
             'content' => 'required',
         ]);
-
+//        file_get_contents("https://api.telegram.org/bot2100561755:AAHiiRtTziabQukUOnqyxd7VUVXUpe2kXPs/sendMessage?chat_id=454428994&text=".$value['email']);
         Contact::create($value);
         return redirect()->route('contact.index');
     }
