@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Admin\CategoriesController as AdminCategoriesController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
-use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PostsController as AdminPostsController;
 use App\Http\Controllers\PostsController;
@@ -23,9 +22,6 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [HomeController::class, 'about']);
-
-Route::get('/contact', [ContactController::class, 'index']);
-Route::resource('contact', ContactController::class);
 
 Route::get('/category/{uri}', [CategoriesController::class, 'show']);
 Route::get('/category', [CategoriesController::class, 'show']);
