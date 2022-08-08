@@ -8,6 +8,7 @@ use App\Models\Posts;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Monolog\Handler\RedisHandler;
@@ -140,10 +141,10 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Posts $post
+     * @return RedirectResponse
      */
-    public function destroy(Posts $post)
+    public function destroy(Posts $post): RedirectResponse
     {
         unlink('uploads/' . $post->photo);
         $post->delete();
