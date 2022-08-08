@@ -74,7 +74,7 @@
                 <div class="card shadow-sm mb-2">
                     <div class="card-body">
                         <ul class="nav flex-column">
-                            @foreach($categories as $category)
+                            @foreach($categories ?? '' as $category)
                                 <li class="nav-item"><a href="{{ url('/category').'/'.$category->name }}"
                                                         class="nav-link text-decoration-none"><i
                                             class="bi bi-folder2-open"></i> {{ $category->name }}</a></li>

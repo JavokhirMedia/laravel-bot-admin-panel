@@ -65,7 +65,7 @@ class CategoriesController extends Controller
      * @param SaveCategoryRequest $request
      * @return RedirectResponse
      */
-    public function store(SaveCategoryRequest $request)
+    public function store(SaveCategoryRequest $request): RedirectResponse
     {
         $value = $request->validated();
         $value['url'] = $this->generateUrl($value['name']);
@@ -121,7 +121,7 @@ class CategoriesController extends Controller
      * @param Categories $category
      * @return RedirectResponse
      */
-    public function destroy(Categories $category)
+    public function destroy(Categories $category): RedirectResponse
     {
         $category->delete();
 

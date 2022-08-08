@@ -49,7 +49,7 @@
 
     <!-- Main Footer -->
     <footer class="main-footer">
-      <strong>Copyright &copy; {{ date('Y') }} Javohir Raxmonberganov
+        <strong>Copyright &copy; {{ date('Y') }} Javohir Raxmonberganov</strong>
     </footer>
   </div>
 

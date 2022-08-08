@@ -2,31 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Contact;
+use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
-class ContactController extends \Illuminate\Routing\Controller
+class ContactController extends Controller
 {
 
     public function index()
     {
-//        $id = Contact::orderByDesc('id')->paginate(15);
-//        $name = Contact::orderByDesc('name')->paginate(15);
-//        $email = Contact::orderByDesc('email')->paginate(15);
-//        $phone = Contact::orderByDesc('phone')->paginate(15);
-//        $subject = Contact::orderByDesc('subject')->paginate(15);
-//        $content = Contact::orderByDesc('content')->paginate(15);
-//        return view('frontend.contact.show', [
-//            'id' => $id,
-//            'name' => $name,
-//            'email' => $email,
-//            'phone' => $phone,
-//            'subject' => $subject,
-//            'content' => $content,
-//        ]);
-        $categories = Contact::all();
+        $categories = Categories::all();
+        $contact = new Contact();
         return view('frontend.contact.show',[
             'categories' => $categories,
+            'contact' => $contact,
         ]);
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        $value = $request->validate([
+            'name' => 'required|min:3',
+            'email' => 'sometimes|required|email',
+            'phone' => 'required|min:11|numeric',
+            'subject' => 'required|min:5',
+            'content' => 'required',
+        ]);
+
+        Contact::create($value);
+        return redirect()->route('contact.index');
     }
 
 

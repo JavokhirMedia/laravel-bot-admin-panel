@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Models\Posts;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -61,10 +62,10 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $value = $request->validate([
             'title' => 'required|min:5',
@@ -85,8 +86,9 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Posts $post
+     * @return Application|Factory|View
+     * @throws BindingResolutionException
      */
     public function show(Posts $post)
     {
@@ -98,8 +100,9 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Posts $post
+     * @return Application|Factory|View
+     * @throws BindingResolutionException
      */
     public function edit(Posts $post)
     {
@@ -113,11 +116,11 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param Posts $post
+     * @param Request $request
      * @return Response
      */
-    public function update(Posts $post, Request $request)
+    public function update(Posts $post, Request $request): Response
     {
         $value = $request->validate([
             'title' => 'required|min:5',
