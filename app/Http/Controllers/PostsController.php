@@ -17,7 +17,7 @@ class PostsController extends Controller
         $previous = Posts::where('id', '<', $id)->where('category_id', '=', $category_id)->orderBy('id','desc')->first();
 
         $next = Posts::where('id', '>', $id)->where('category_id', '=', $category_id)->orderBy('id','asc')->first();
-    
+
         $viewcount = $post->viewcount;
         $post->viewcount = ++$viewcount;
         $post->save();

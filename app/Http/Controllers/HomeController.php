@@ -56,17 +56,6 @@ class HomeController extends Controller
         ]);
     }
 
-    /**
-     * @throws BindingResolutionException
-     */
-    public function contact()
-    {
-        $categories = Categories::all();
-        return view('frontend.contact.show',[
-            'categories' => $categories,
-        ]);
-    }
-
     public function search(Request $request){
         $categories = Categories::all();
         if(!empty($request->q)){
