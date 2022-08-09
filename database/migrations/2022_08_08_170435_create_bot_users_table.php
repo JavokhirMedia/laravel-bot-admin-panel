@@ -13,7 +13,7 @@ class CreateBotUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('bot_users', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
             $table->string('first_name');
@@ -34,6 +34,6 @@ class CreateBotUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('bot_users');
     }
 }
