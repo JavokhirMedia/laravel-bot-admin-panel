@@ -23,6 +23,7 @@ class CreateBotUsersTable extends Migration
             $table->string('phone_number');
             $table->string('status');
             $table->string('last_command');
+            $table->string('lang');
             $table->timestamps();
         });
     }

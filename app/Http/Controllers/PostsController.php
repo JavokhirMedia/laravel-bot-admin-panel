@@ -11,7 +11,7 @@ class PostsController extends Controller
 
     public function show($uri)
     {
-        $post = Posts::where('url', '=', $uri)->firstOrFail();
+        $post = Posts::where('name', '=', $uri)->firstOrFail();
         $id = $post->id;
         $category_id = $post->category_id;
         $previous = Posts::where('id', '<', $id)->where('category_id', '=', $category_id)->orderBy('id','desc')->first();

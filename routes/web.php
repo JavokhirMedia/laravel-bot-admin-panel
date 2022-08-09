@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BotUsersController as AdminBotUsersController;
 use App\Http\Controllers\Admin\CategoriesController as AdminCategoriesController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::get('/', AdminHomeController::class);
     Route::resource('posts', AdminPostsController::class);
     Route::resource('categories', AdminCategoriesController::class);
+//    Route::resource('bot/users', AdminBotUsersController::class);
+    Route::resource('botusers', AdminBotUsersController::class);
 });
 Route::post('/upload', [AdminPostsController::class, 'upload']);
 Route::get('/search', [HomeController::class, 'search']);

@@ -155,7 +155,7 @@ class PostsController extends Controller
         return redirect()->route('posts.index');
     }
 
-    public function upload(Request $request)
+    public function upload(Request $request): \Illuminate\Http\JsonResponse
     {
         $fileName = $request->file('file')->getClientOriginalName();
         $request->file('file')->move(public_path('uploads'), $fileName);
